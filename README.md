@@ -1,6 +1,6 @@
-# 🔥 X4 UDP Flooder v4.0
+# 🔥 X4 UDP Flooder v1.0
 
-A high-performance, multithreaded UDP flood testing tool written in C++ for Linux. Designed for stress testing and bandwidth benchmarking in **controlled, authorized environments** only.
+😏😏😏 A high-performance, multithreaded UDP flood testing tool written in C++ for Linux. Designed for stress testing and bandwidth benchmarking in **controlled, authorized environments** only.
 
 ---
 
