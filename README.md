@@ -6,17 +6,17 @@
 
 ## 🚀 Features
 
-- 🧵 **Multithreaded Engine** – High-speed parallel packet sending
+- 🧵 **Multithreaded Engine** – High-speed parallel packet sending  
 - 📊 **Live Stats**:
-  - Real-time Mbps & average speed
-  - Total MB sent
-  - Ping latency (ms) or timeout
-  - Elapsed & remaining time
-- 🧠 **Built-in ICMP ping** before and during the attack
-- 📄 **Optional detailed logging** (`--log`)
-- ⚙️ **Custom packet size** support via `--packet-size=SIZE`
-- 🌐 Supports **IPv4 and domain names**
-- 📦 Graceful `Ctrl+C` handling with cleanup, final stats & log save
+  - Real-time Mbps & average speed  
+  - Total MB sent  
+  - Ping latency (ms) or timeout  
+  - Elapsed & remaining time  
+- 🧠 **Built-in ICMP ping** before and during the attack  
+- 📄 **Optional detailed logging** (`--log`)  
+- ⚙️ **Custom packet size** support via `--packet-size=SIZE`  
+- 🌐 Supports **IPv4 and domain names**  
+- 📦 Graceful `Ctrl+C` handling with cleanup, final stats & log save  
 
 ---
 
@@ -36,14 +36,17 @@
 ## 📥 Installation (Linux Only)
 
 ### Requirements:
-- Linux-based OS
-- g++ compiler (`sudo apt install g++`)
+- Linux-based OS  
+- g++ compiler (`sudo apt install g++`)  
 - Root privileges (required for ping support)
 
-### Compile:
+### Steps:
 
 ```bash
+git clone https://github.com/yourname/x4-udpflooder.git
+cd x4-udpflooder
 g++ x4.cpp -o x4 -lpthread
+./x4
 ```
 
 (Optional: Move to system path)
@@ -68,9 +71,9 @@ You can run this tool on Windows using **Windows Subsystem for Linux 2 (WSL2)**:
    wsl --install -d Ubuntu
    ```
 
-3. Launch Ubuntu from Start Menu and install build tools:
+3. Launch Ubuntu from Start Menu and install Git and build tools:
    ```bash
-   sudo apt update && sudo apt install g++ build-essential
+   sudo apt update && sudo apt install git g++ build-essential
    ```
 
 4. Compile and run:
@@ -86,3 +89,20 @@ You can run this tool on Windows using **Windows Subsystem for Linux 2 (WSL2)**:
 ## ⚠️ Legal Disclaimer
 
 > This tool is intended **only for educational and authorized testing purposes**. Never use it on networks you do not own or have explicit permission to test. The developer is not responsible for any misuse or resulting consequences.
+
+---
+
+## 🌐 Recommended VPS Setup (Performance Matters)
+
+For best results, you should run this on a **VPS with at least 5Gbps throughput** – ideally 10Gbps – especially if you're using high thread counts or large packet sizes.
+
+One provider worth checking out is:
+
+### ✅ Cloudzy
+
+- Known for offering **10Gbps throughput VPS** options  
+- **Cheap bandwidth** and solid price-to-performance  
+- Consistently delivers high port capacity and fast CPUs  
+- No affiliation — just what I personally use because it performs extremely well for network stress testing
+
+> 🧠 Tip: Always choose a VPS with high outbound speed, strong single-core performance, and minimal bandwidth restrictions if you want accurate flood/benchmark results.
