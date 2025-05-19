@@ -43,6 +43,7 @@
 ### Steps:
 
 ```bash
+sudo apt install git (if not installed already)
 git clone https://github.com/aserav/X4-UDP-FLOODER-V1.0
 cd x4-udpflooder
 g++ x4.cpp -o x4 -lpthread
@@ -73,7 +74,8 @@ You can run this tool on Windows using **Windows Subsystem for Linux 2 (WSL2)**:
 
 3. Launch Ubuntu from Start Menu and install Git and build tools:
    ```bash
-   sudo apt update && sudo apt install git g++ build-essential
+   sudo apt install git (if not installed already)
+   sudo apt update && sudo apt install g++ build-essential
    ```
 
 4. Compile and run:
