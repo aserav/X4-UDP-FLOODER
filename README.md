@@ -1,63 +1,68 @@
-# 🔥 X4 UDP Flooder v1.0
+# 🔥 X4 UDP Flooder v1.0 (Layer 4)
 
-**A high-performance, multithreaded UDP flood testing tool written in C++ for Linux.**  
-Built for **stress testing** and **bandwidth benchmarking** in **controlled, authorized environments** only.
+**X4 is a high-performance Layer 4 UDP flood testing tool written in C++ for Linux.**  
+Built for **bandwidth benchmarking** and **stress testing** in **authorized, controlled environments only.**
 
 ---
 
 ## 🚀 Features
 
-- 🧵 **Multithreaded Engine** – High-speed parallel packet sending  
+- 🧵 **Multithreaded Engine** – Sends packets in parallel for max performance  
 - 📊 **Live Stats**:
   - Real-time Mbps & average speed  
-  - Total MB sent  
-  - Ping latency (ms) or timeout  
+  - Total data sent (MB)  
+  - ICMP ping latency or timeout  
   - Elapsed & remaining time  
-- 🧠 **Built-in ICMP Ping** – Automatic ping before and during flood  
-- 📄 **Optional Logging** – Save detailed stats with `--log`  
-- ⚙️ **Custom Packet Size** – Set via `--packet-size=SIZE`  
-- 🌐 **IPv4 & Domain Support** – Accepts domains or direct IPs  
-- ⛔ **Graceful Ctrl+C Handling** – Clean exit with summary + optional log  
+- 🧠 **Built-in ICMP Ping** – Measures latency before and during flood  
+- ⚙️ **Custom Packet Size** – Adjustable via `--packet-size=SIZE`  
+- 📄 **Optional Logging** – Save full session stats with `--log`  
+- 🌐 **IPv4 + Domain Support** – Enter IPs or hostnames  
+- ⛔ **Graceful Ctrl+C Handling** – Clean exit with full summary and saved log  
 
 ---
 
 ## 💻 Usage
 
 ```bash
-./x4 <IP/Domain> <PORT> <THREADS> <DURATION> [--packet-size=SIZE] [--log]
+./x4 <IP or Domain> <PORT> <THREADS> <DURATION> [--packet-size=SIZE] [--log]
 ```
 
 ### Example:
 ```bash
 ./x4 8.8.8.8 53 100 60 --packet-size=1024 --log
-# (--packet-size is optional; defaults to 1024 if not specified)
+# (If --packet-size is omitted, defaults to 1024 bytes)
 ```
 
 ---
 
-## 📥 Installation (Linux)
+## 📥 Installation (Linux & WSL2)
 
 ### Requirements:
-- Linux OS  
-- `g++` compiler (`sudo apt install g++`)  
-- Root privileges (for ICMP ping support)
+- A **Linux** system (or **WSL2** on Windows)  
+- `g++` and build tools installed  
+- **Root privileges** (required for ICMP ping)
 
 ### Steps:
 
 ```bash
-# Install git if needed
-sudo apt install git
+# Update packages
+sudo apt update
 
-# Clone and compile
+# Install required dependencies
+sudo apt install git g++ build-essential -y
+
+# Clone the project
 git clone https://github.com/aserav/X4-UDP-FLOODER-V1.0
 cd X4-UDP-FLOODER-V1.0
+
+# Compile the source code
 g++ x4.cpp -o x4 -lpthread
 
 # Run the flooder
-./x4 <target> <port> <threads> <duration>
+sudo ./x4 <target> <port> <threads> <duration> [--packet-size=SIZE] [--log]
 ```
 
-(Optional) Move the binary to system path:
+(Optional) Move it to your system path for global access:
 
 ```bash
 sudo mv x4 /usr/local/bin
@@ -67,53 +72,45 @@ sudo mv x4 /usr/local/bin
 
 ## 🪟 Running on Windows (via WSL2)
 
-You can run this tool using **Windows Subsystem for Linux 2 (WSL2)**:
+To run this on Windows, you must use **WSL2**, which supports raw sockets:
 
-1. **Install WSL:**
+1. **Enable WSL & WSL2:**
    ```powershell
    wsl --install
    ```
 
-2. **Install Ubuntu:**
+2. **Install Ubuntu via WSL:**
    ```powershell
    wsl --install -d Ubuntu
    ```
 
-3. **Inside Ubuntu shell:**
-   ```bash
-   sudo apt update
-   sudo apt install git g++ build-essential
+3. **Follow the same Linux steps above inside Ubuntu terminal.**
 
-   git clone https://github.com/aserav/X4-UDP-FLOODER-V1.0
-   cd X4-UDP-FLOODER-V1.0
-   g++ x4.cpp -o x4 -lpthread
-   sudo ./x4 <target> <port> <threads> <duration> ...
-   ```
-
-> ⚠️ WSL **1 does not support raw sockets**. Use **WSL 2** for full functionality (including ping).
+> ⚠️ WSL1 does **not support raw sockets**, so ICMP ping will not work. Always use **WSL2**.
 
 ---
 
 ## ⚠️ Legal Disclaimer
 
-> This software is for **educational and authorized testing** only. Do **not** use it on networks you do not own or lack explicit permission to test.  
-> The developer assumes **no responsibility** for misuse or damages caused by this software.
+> This software is for **educational use and authorized testing** only.  
+> **Do not** use this on networks or systems you do not own or lack explicit permission to test.  
+> The developer assumes **no liability** for misuse or damage caused by this software.
 
 ---
 
-## 🌐 Recommended VPS Setup (Performance Tips)
+## 🌐 Recommended VPS for Best Performance
 
-For best results, use a **VPS with 5–10Gbps throughput**. Higher outbound speed = more accurate benchmark and stress test results.
+To fully leverage X4’s speed, use a VPS with **at least 5–10Gbps throughput**.
 
-### ✅ Recommended Provider: **Cloudzy**
+### ✅ Top Pick: **Cloudzy**
 
-- Offers **10Gbps bandwidth** options  
-- **Affordable** plans with **high throughput**  
-- Excellent for network testing and packet flooding  
-- Not sponsored — just proven performance from personal use
+- Offers **10Gbps ports**  
+- **Affordable pricing**  
+- No bandwidth throttling  
+- Optimized for high-speed testing  
+- Not sponsored — recommended from experience
 
-> **Pro tip:** Choose a VPS with:
-> - Strong single-core performance  
-> - No bandwidth throttling  
-> - 10Gbps port (if available)  
-> - Low latency to target
+> **Tips for best results:**
+> - Use a VPS with strong **single-core performance**  
+> - Avoid hosts with capped outbound speed  
+> - Choose a server close to your target for lower ping  
