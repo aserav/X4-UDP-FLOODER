@@ -1,6 +1,7 @@
 # 🔥 X4 UDP Flooder v1.0
 
-😏😏😏 A high-performance, multithreaded UDP flood testing tool written in C++ for Linux. Designed for stress testing and bandwidth benchmarking in **controlled, authorized environments** only.
+**A high-performance, multithreaded UDP flood testing tool written in C++ for Linux.**  
+Built for **stress testing** and **bandwidth benchmarking** in **controlled, authorized environments** only.
 
 ---
 
@@ -12,11 +13,11 @@
   - Total MB sent  
   - Ping latency (ms) or timeout  
   - Elapsed & remaining time  
-- 🧠 **Built-in ICMP ping** before and during the attack  
-- 📄 **Optional detailed logging** (`--log`)  
-- ⚙️ **Custom packet size** support via `--packet-size=SIZE`  
-- 🌐 Supports **IPv4 and domain names**  
-- 📦 Graceful `Ctrl+C` handling with cleanup, final stats & log save  
+- 🧠 **Built-in ICMP Ping** – Automatic ping before and during flood  
+- 📄 **Optional Logging** – Save detailed stats with `--log`  
+- ⚙️ **Custom Packet Size** – Set via `--packet-size=SIZE`  
+- 🌐 **IPv4 & Domain Support** – Accepts domains or direct IPs  
+- ⛔ **Graceful Ctrl+C Handling** – Clean exit with summary + optional log  
 
 ---
 
@@ -28,29 +29,35 @@
 
 ### Example:
 ```bash
-./x4 8.8.8.8 53 100 60 --packet-size=1024 --log  # (--packet-size is optional; defaults to 1024 if not specified)
+./x4 8.8.8.8 53 100 60 --packet-size=1024 --log
+# (--packet-size is optional; defaults to 1024 if not specified)
 ```
 
 ---
 
-## 📥 Installation (Linux Only)
+## 📥 Installation (Linux)
 
 ### Requirements:
-- Linux-based OS  
-- g++ compiler (`sudo apt install g++`)  
-- Root privileges (required for ping support)
+- Linux OS  
+- `g++` compiler (`sudo apt install g++`)  
+- Root privileges (for ICMP ping support)
 
 ### Steps:
 
 ```bash
-sudo apt install git (if not installed already)
+# Install git if needed
+sudo apt install git
 
+# Clone and compile
 git clone https://github.com/aserav/X4-UDP-FLOODER-V1.0
+cd X4-UDP-FLOODER-V1.0
 g++ x4.cpp -o x4 -lpthread
-./x4
+
+# Run the flooder
+./x4 <target> <port> <threads> <duration>
 ```
 
-(Optional: Move to system path)
+(Optional) Move the binary to system path:
 
 ```bash
 sudo mv x4 /usr/local/bin
@@ -58,55 +65,55 @@ sudo mv x4 /usr/local/bin
 
 ---
 
-## 🪟 Running on Windows?
+## 🪟 Running on Windows (via WSL2)
 
-You can run this tool on Windows using **Windows Subsystem for Linux 2 (WSL2)**:
+You can run this tool using **Windows Subsystem for Linux 2 (WSL2)**:
 
-1. Open PowerShell and install WSL:
+1. **Install WSL:**
    ```powershell
    wsl --install
    ```
 
-2. Install Ubuntu:
+2. **Install Ubuntu:**
    ```powershell
    wsl --install -d Ubuntu
    ```
 
-3. Launch Ubuntu from Start Menu and install Git and build tools:
+3. **Inside Ubuntu shell:**
    ```bash
-   sudo apt install git (if not installed already)
-  
-   sudo apt update && sudo apt install g++ build-essential
-   ```
+   sudo apt update
+   sudo apt install git g++ build-essential
 
-4. Compile and run:
-   ```bash
    git clone https://github.com/aserav/X4-UDP-FLOODER-V1.0
+   cd X4-UDP-FLOODER-V1.0
    g++ x4.cpp -o x4 -lpthread
-   sudo ./x4 <ip> <port> <threads> <duration> ...
+   sudo ./x4 <target> <port> <threads> <duration> ...
    ```
 
-> ⚠️ WSL 1 does **not support raw sockets** – use **WSL 2** for proper ping functionality.
+> ⚠️ WSL **1 does not support raw sockets**. Use **WSL 2** for full functionality (including ping).
 
 ---
 
 ## ⚠️ Legal Disclaimer
 
-> This tool is intended **only for educational and authorized testing purposes**. Never use it on networks you do not own or have explicit permission to test. The developer is not responsible for any misuse or resulting consequences.
+> This software is for **educational and authorized testing** only. Do **not** use it on networks you do not own or lack explicit permission to test.  
+> The developer assumes **no responsibility** for misuse or damages caused by this software.
 
 ---
 
-## 🌐 Recommended VPS Setup (Performance Matters)
+## 🌐 Recommended VPS Setup (Performance Tips)
 
-For best results, you should run this on a **VPS with at least 5Gbps throughput** – ideally 10Gbps – especially if you're using high thread counts or large packet sizes.
+For best results, use a **VPS with 5–10Gbps throughput**. Higher outbound speed = more accurate benchmark and stress test results.
 
-One provider worth checking out is:
+### ✅ Recommended Provider: **Cloudzy**
 
-### ✅ Cloudzy
+- Offers **10Gbps bandwidth** options  
+- **Affordable** plans with **high throughput**  
+- Excellent for network testing and packet flooding  
+- Not sponsored — just proven performance from personal use
 
-- Known for offering **10Gbps throughput VPS** options  
-- **Cheap bandwidth** and solid price-to-performance  
-- Consistently delivers high port capacity and fast CPUs  
-- No affiliation — just what I personally use because it performs extremely well for network stress testing
-
-> 🧠 Tip: Always choose a VPS with high outbound speed, strong single-core performance, and minimal bandwidth restrictions if you want accurate flood/benchmark results.
+> **Pro tip:** Choose a VPS with:
+> - Strong single-core performance  
+> - No bandwidth throttling  
+> - 10Gbps port (if available)  
+> - Low latency to target
