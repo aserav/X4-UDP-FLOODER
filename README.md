@@ -43,7 +43,7 @@
 ### Steps:
 
 ```bash
-git clone https://github.com/yourname/x4-udpflooder.git
+git clone https://github.com/aserav/X4-UDP-FLOODER-V1.0
 cd x4-udpflooder
 g++ x4.cpp -o x4 -lpthread
 ./x4
@@ -78,6 +78,7 @@ You can run this tool on Windows using **Windows Subsystem for Linux 2 (WSL2)**:
 
 4. Compile and run:
    ```bash
+   git clone https://github.com/aserav/X4-UDP-FLOODER-V1.0
    g++ x4.cpp -o x4 -lpthread
    sudo ./x4 <ip> <port> <threads> <duration> ...
    ```
