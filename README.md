@@ -28,7 +28,7 @@ A high-performance, multithreaded UDP flood testing tool written in C++ for Linu
 
 ### Example:
 ```bash
-./x4 8.8.8.8 53 100 60 --packet-size=1024 --log
+./x4 8.8.8.8 53 100 60 --packet-size=1024 (If --packet-size is not used, it will default to 1024) --log
 ```
 
 ---
